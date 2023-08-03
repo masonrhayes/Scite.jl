@@ -31,7 +31,6 @@ function scite(issns::Vector{String})
     println(issn_chunks)
     for issn_chunk in issn_chunks # loop through each chunk of issns, max 500 at a time
         issn_chunk = join(issn_chunk, ",") # join the issns in the chunk with a comma
-        println(issn_chunk)
         try 
             results = scite(issn_chunk) # get the results
             append!(df, scite(issn_chunk)) # append the results of the API request to the DataFrame
