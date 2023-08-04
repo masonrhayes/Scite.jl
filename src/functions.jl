@@ -28,7 +28,6 @@ function scite(issns::Vector{String})
     issns = strip.(filter!(x -> occursin(r"^\d{4}-\d{3}[\dxX]", x), issns)) # filter issns to only those that match the regex
     df = DataFrame()
     issn_chunks = chunks(issns, 500) # only 500 issns per request are allowed
-    println(issn_chunks)
     for issn_chunk in issn_chunks # loop through each chunk of issns, max 500 at a time
         issn_chunk = join(issn_chunk, ",") # join the issns in the chunk with a comma
         try 
